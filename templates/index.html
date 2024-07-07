@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Configuration</title>
+    <style>
+        #project_name_label {
+            font-size: 24px; /* Same size as h2 */
+        }
+        #project_name {
+            width: 600px;
+            height: 40px;
+            font-size: 24px; /* Same size as h2 */
+        }
+        #new_team_input, #save_project_section {
+            display: none; /* Initially hide the new team input and save section */
+        }
+    </style>
+    <script>
+        function toggleNewTeamInput() {
+            var teamDropdown = document.getElementById('team');
+            var newTeamInput = document.getElementById('new_team_input');
+            if (teamDropdown.value === 'Create A New Team') {
+                newTeamInput.style.display = 'block';
+            } else {
+                newTeamInput.style.display = 'none';
+                fillDefaultValues(teamDropdown.value);
+            }
+        }
+
+        function fillDefaultValues(teamType) {
+            var teams = {{ teams | tojson }};
+            var team = teams.find(team => team.name === teamType);
+            if (team) {
+                document.getElementById('capabilities').value = team.capabilities;
+                document.getElementById('objectives').value = team.objectives;
+                document.getElementById('avoidances').value = team.avoidances;
+                document.getElementById('loop_breakers').value = team.loop_breakers;
+                document.getElementById('artifacts').value = team.artifacts;
+            }
+        }
+
+        function toggleSaveProject() {
+            var saveProjectSection = document.getElementById('save_project_section');
+            saveProjectSection.style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <h1>Configure New Project</h1>
+    <form method="POST">
+        <label for="project_name" id="project_name_label">Project Name:</label>
+        <input type="text" id="project_name" name="project_name" required><br><br>
+
+        <label for="team">Select Team:</label>
+        <select id="team" name="team" onchange="toggleNewTeamInput()" required>
+            <option value="" disabled selected>Select a team</option>
+            {% for team in teams %}
+                <option value="{{ team.name }}">{{ team.name }}</option>
+            {% endfor %}
+            <option value="Create A New Team">Create A New Team</option>
+        </select><br><br>
+
+        <div id="new_team_input">
+            <label for="new_team_name">New Team Name:</label>
+            <input type="text" id="new_team_name" name="new_team_name"><br><br>
+
+            <button type="button" onclick="toggleSaveProject()">Create New Project Configuration</button><br><br>
+        </div>
+
+        <h2>1. Imagine the ideal team for your goal. List their most important capabilities.</h2>
+        <textarea id="capabilities" name="capabilities" rows="4" cols="50" required></textarea><br><br>
+
+        <h2>2. What are some objectives the team would accomplish along the way? Breaking the project down into steps is very helpful.</h2>
+        <textarea id="objectives" name="objectives" rows="4" cols="50" required></textarea><br><br>
+
+        <h2>3. What content, behaviors, or assumptions should the team specifically avoid?</h2>
+        <textarea id="avoidances" name="avoidances" rows="4" cols="50" required></textarea><br><br>
+
+        <h2>4. If the team gets caught in a loop, going around and around on a problem, what are some other ways to think about the problem that could break them out of their loop?</h2>
+        <textarea id="loop_breakers" name="loop_breakers" rows="4" cols="50" required></textarea><br><br>
+
+        <h2>5. What documents, artifacts, models or programs would you like the team to create as part of the finished product?</h2>
+        <textarea id="artifacts" name="artifacts" rows="4" cols="50" required></textarea><br><br>
+
+        <div id="save_project_section">
+            <h2>Save Project Configuration?</h2>
+            <input type="hidden" name="save_project" value="yes">
+            <button type="submit">Yes</button>
+            <button type="button" onclick="location.reload();">No</button><br><br>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

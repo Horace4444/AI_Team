@@ -1,0 +1,40 @@
+{
+    "teams": [
+        {
+            "name": "Python Scientific Research",
+            "capabilities": "Data analysis, statistical modeling, data visualization, machine learning, scientific computing.",
+            "objectives": "1. Collect and preprocess data. 2. Perform exploratory data analysis. 3. Build and validate models. 4. Interpret results and generate reports.",
+            "avoidances": "Avoid overfitting models, biased data, and neglecting data cleaning.",
+            "loop_breakers": "Consider alternative data sources, revisit assumptions, use different modeling techniques.",
+            "artifacts": "Research papers, data visualizations, models, code scripts, data reports."
+        },
+        
+        {
+            "name": "Python Financial Modeling",
+            "capabilities": "Financial analysis, quantitative modeling, risk assessment, portfolio management, algorithmic trading.",
+            "objectives": "1. Gather financial data. 2. Build financial models. 3. Backtest models. 4. Optimize portfolios. 5. Generate trading signals.",
+            "avoidances": "Avoid data snooping, unrealistic assumptions, and ignoring transaction costs.",
+            "loop_breakers": "Consider different asset classes, adjust model parameters, review economic indicators.",
+            "artifacts": "Financial reports, trading algorithms, risk assessments, portfolio optimizations, data dashboards."
+        },
+        
+        {
+            "name": "Solidity Dev Team",
+            "capabilities": "Smart contract development, blockchain integration, security auditing, decentralized application (DApp) development.",
+            "objectives": "1. Design smart contracts. 2. Implement smart contracts. 3. Test and deploy smart contracts. 4. Integrate with front-end applications.",
+            "avoidances": "Avoid security vulnerabilities, gas inefficiencies, and poor documentation.",
+            "loop_breakers": "Review existing smart contracts, collaborate with security experts, explore different blockchain platforms.",
+            "artifacts": "Smart contracts, audit reports, DApps, documentation, user guides."
+        },
+        
+        {
+            "name": "Node.js Frontend Engineering",
+            "capabilities": "Frontend development, user interface design, responsive design, API integration, performance optimization.",
+            "objectives": "1. Design user interfaces. 2. Implement front-end logic. 3. Integrate with back-end APIs. 4. Ensure responsive design. 5. Optimize performance.",
+            "avoidances": "Avoid inconsistent UI elements, poor performance, and unoptimized code.",
+            "loop_breakers": "Consider different UI frameworks, conduct user testing, review performance metrics.",
+            "artifacts": "Web applications, design prototypes, performance reports, integration tests, style guides."
+        }
+        
+    ]
+}
